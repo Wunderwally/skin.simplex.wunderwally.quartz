@@ -548,7 +548,7 @@
 					<width>200</width>
 					<height>30</height>
 					<label>$INFO[ListItem.Artist]</label>
-					<textcolor>DarkGray</textcolor>
+					<textcolor>Gray</textcolor>
 					<shadowcolor>Shadow</shadowcolor>
 					<font>homelabel</font>
 					<align>center</align>
@@ -866,7 +866,7 @@
 					<width>200</width>
 					<height>30</height>
 					<label>$INFO[ListItem.Artist]</label>
-					<textcolor>DarkGray</textcolor>
+					<textcolor>Gray</textcolor>
 					<shadowcolor>Shadow</shadowcolor>
 					<font>homelabel</font>
 					<align>center</align>
