@@ -543,10 +543,10 @@
 		</control>
 		<!-- ### LIST VIEW ITSELF ### -->
 		<control type="list" id="50">
-			<posx>664</posx>
+			<posx>635</posx>
 			<posy>50</posy>
 			<width>550</width>
-			<height>650</height>
+			<height>625</height>
 			<onup>50</onup>
 			<ondown>50</ondown>
 			<onleft>PageUp</onleft>
