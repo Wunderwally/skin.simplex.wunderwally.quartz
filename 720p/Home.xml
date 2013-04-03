@@ -1061,5 +1061,13 @@
 			<height>45</height>
 			<visible>Control.IsVisible(11000) + Control.IsVisible(11001)</visible>
 		</control>
+
+<control type="image">
+		<width>200</width>
+		<height>200</height>
+		<texture>Search.png</texture>
+		<visible>Container(300).HasFocus(7)</visible>
+		</control>
+
 	</controls>
 </window>
