@@ -34,12 +34,18 @@
 					<visible>Stringcompare(Container(300).ListItem(0).Label2,system)</visible>
 					<onfocus>SetFocus(304,0)</onfocus>
 				</control>
+				
+				<control type="button">
+					<visible>Stringcompare(Container(300).ListItem(0).Label2,seaarch)</visible>
+					<onfocus>SetFocus(305,0)</onfocus>
+				</control>
+				
 				<control type="button">
 					<visible>Control.IsVisible(11003)</visible>
 					<onfocus>SetFocus(11003)</onfocus>
 				</control>
 				<control type="button">
-					<visible>!Stringcompare(Container(300).ListItem(0).Label2,pref) + !Stringcompare(Container(300).ListItem(0).Label2,chan) + !Stringcompare(Container(300).ListItem(0).Label2,dvd) + !Control.IsVisible(11000) + !Control.IsVisible(11001) + !Control.IsVisible(11003)</visible>
+					<visible>!Stringcompare(Container(300).ListItem(0).Label2,search) + !Stringcompare(Container(300).ListItem(0).Label2,pref) + !Stringcompare(Container(300).ListItem(0).Label2,chan) + !Stringcompare(Container(300).ListItem(0).Label2,dvd) + !Control.IsVisible(11000) + !Control.IsVisible(11001) + !Control.IsVisible(11003)</visible>
 					<onfocus>SetFocus(300)</onfocus>
 				</control>
 			</control>
@@ -49,6 +55,7 @@
 				<onfocus>Control.SetFocus(302,0)</onfocus>
 				<onfocus>Control.SetFocus(303,0)</onfocus>
 				<onfocus>Control.SetFocus(304,0)</onfocus>
+				<onfocus>Control.SetFoucs(305,0)</onfocus>
 				<onfocus>Control.SetFocus(300)</onfocus>
 				<onfocus>Control.Move(300,1)</onfocus>
 			</control>
@@ -58,6 +65,7 @@
 				<onfocus>Control.SetFocus(302,0)</onfocus>
 				<onfocus>Control.SetFocus(303,0)</onfocus>
 				<onfocus>Control.SetFocus(304,0)</onfocus>
+				<onfocus>Control.SetFoucs(305,0)</onfocus>
 				<onfocus>Control.SetFocus(300)</onfocus>
 				<onfocus>Control.Move(300,-1)</onfocus>
 			</control>
@@ -69,12 +77,12 @@
 				<height>720</height>
 				<aspectratio>scale</aspectratio>
 				<aligny>top</aligny>
-				<imagepath background="true">http://127.0.0.1:32400/library/arts</imagepath>
+				<imagepath background="true">media/Search.png</imagepath>
 				<timeperimage>8000</timeperimage>
 				<fadetime>1500</fadetime>
 				<randomize>true</randomize>
 				<loop>yes</loop>
-				<visible>!Skin.HasSetting(HideHomeSlideshow) + Skin.HasSetting(CustomSlideshow)</visible>		
+				<visible>Container(300).HasFocus(7)</visible>		
 			</control>
 			<!-- Custom Slideshow  -->
 			<control type="multiimage">
@@ -139,13 +147,6 @@
     		    <width>300</width>
         		<height>54</height>
         		<aspectratio>stretch</aspectratio>
-<!--
-				<texture>homemenu_focus.png</texture>
-				<posx>0</posx>
-				<posy>330</posy>
-				<width>1280</width>
-				<height>50</height>
--->
 				<visible>Control.HasFocus(300) + ![Window.IsVisible(4567) | Window.IsVisible(5678) | Window.IsVisible(6789)]</visible>
 				<animation effect="fade" time="200">VisibleChange</animation>
 			</control>
@@ -268,8 +269,7 @@
 					<item>
 						<description>Search</description>
 						<label>$LOCALIZE[31400]</label>
-						<thumb>media/search.png</thumb>
-						
+						<label2>search</label2>
 						<onclick>Plex.ActivateWindow(10051)</onclick>
 						<visible>!Skin.HasSetting(HideSearch)</visible>
 						
@@ -279,7 +279,10 @@
 						<description>Preferences Menu</description>
 						<label>$LOCALIZE[31200]</label>
 						<onclick>SetFocus(506)</onclick>
-						<visible>false</visible>
+						<image>Search.png</image>
+						<posx>10</posx>
+						<posy>10</posy>
+						<visible>Container(300).HasFocus(6)</visible>
 					</item>
 					
 
@@ -288,8 +291,10 @@
 						<description>Search Menu</description>
 						<label>$LOCALIZE[31400]</label>
 						<onclick>Plex.ActivateWindow(10051)</onclick>
-						<thumb>search.png</thumb>
-						<visible>false</visible>
+						<texture>Search.png</texture>
+						<posx>10</posx>
+						<posy>10</posy>
+						<visible>Container(300).HasFocus(7)</visible>
 			
 					</item>
 					<item id="111">
@@ -1053,21 +1058,55 @@
 				<include>RecentlyAddedInfo</include>
 		</control>
 		
-		<control type="image">
-			<texture>home_fade_bottom.png</texture>
-			<posx>0</posx>
-			<posy>675</posy>
-			<width>1280</width>
-			<height>45</height>
-			<visible>Control.IsVisible(11000) + Control.IsVisible(11001)</visible>
-		</control>
+			<!--Homemenu Icons -->
+		
+			<!-- System -->
+			<control type="image">
+			<texture>System.png</texture>
+			<posx>510</posx>
+			<posy>40</posy>
+			<width>250</width>
+			<height>250</height>
+			<visible>Stringcompare(Container(300).ListItem(0).Label2,system)</visible>
+			<onfocus>SetFocus(304,0)</onfocus>
+			</control>
+			
+			<!-- Preferences -->
+			<control type="image">
+			<texture>Preferences.png</texture>
+			<posx>510</posx>
+			<posy>40</posy>
+			<width>250</width>
+			<height>250</height>
+			<visible>Stringcompare(Container(300).ListItem(0).Label2,pref)</visible>
+			<onfocus>SetFocus(301,0)</onfocus>
+			</control>
+		
+			<!-- Channels -->
+			<control type="image">
+			<texture>Channels.png</texture>
+			<posx>510</posx>
+			<posy>40</posy>
+			<width>250</width>
+			<height>250</height>
+			<visible>Stringcompare(Container(300).ListItem(0).Label2,chan)</visible>
+			<onfocus>SetFocus(302,0)</onfocus>
+			</control>
 
-<control type="image">
-		<width>200</width>
-		<height>200</height>
-		<texture>Search.png</texture>
-		<visible>Container(300).HasFocus(7)</visible>
-		</control>
-
+			<!-- Search -->
+			<control type="image">
+			<texture>Search.png</texture>
+			<posx>510</posx>
+			<posy>40</posy>
+			<width>250</width>
+			<height>250</height>
+			<visible>Stringcompare(Container(300).ListItem(0).Label2,search)</visible>
+			<onfocus>SetFocus(305,0)</onfocus>
+			</control>
+		
+		
+				
+		
+		
 	</controls>
 </window>
